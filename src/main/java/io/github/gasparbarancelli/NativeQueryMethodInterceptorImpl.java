@@ -148,7 +148,7 @@ public class NativeQueryMethodInterceptorImpl implements NativeQueryMethodInterc
     private void addParameterJpa(NativeQuery<?> query, NativeQueryInfo info) {
         info.getParameterList().forEach(parameter -> {
             LOGGER.debug("checking if parameter {} exists in sql", parameter.getName());
-            if (parameter.getValue() != null && info.getSql().contains(":" + parameter.getName())) {
+            if (info.getSql().contains(":" + parameter.getName())) {
                 LOGGER.debug("parameter {} exists in SQL", parameter.getName());
                 LOGGER.debug("parameter {} containing the value {} added to SQL", parameter.getName(), parameter.getValue().toString());
                 query.setParameter(parameter.getName(), parameter.getValue());
